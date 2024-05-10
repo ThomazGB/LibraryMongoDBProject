@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/Biblioteca", {});
+mongoose.Promise = global.Promise;
 
-const db = mongoose.connection;
+const url = "mongodb://127.0.0.1/Biblioteca";
 
-db.on("error", console.log("Erro ao conectar-se ao banco de dados"));
-
-db.once("open", () => {
-  console.log("Conectado ao MongoDB!");
-});
-
-module.exports = db;
+mongoose
+  .connect(url)
+  .then(() => {
+    console.log("MongoDB Conectado..");
+  })
+  .catch((err) => {
+    console.log("Erro ao conectar: " + err);
+  });
