@@ -1,0 +1,30 @@
+<main> 
+    <div class="p-5 mb-4 bg-light rounded-3"> 
+        <div class="container-fluid py-5"> 
+            <h2>Lista de livros</h2> 
+            <hr> 
+            <a href="/rota_livros/livros/add"> 
+                <button class="btn btn-success">Novo livro</button></a> 
+            {{#each livros}} 
+            <div class="card mt-4"> 
+                <div class="card-body"> 
+                    <h4><b>ID:</b>{{_id}}</h4> 
+                    <small><b>Nome:</b> {{nome}} </small><br> 
+                    <small><b>Descrição:</b> {{descricao}} </small><br>
+                    <small><b>Gênero:</b> {{genero}} </small><br>
+                    <a href="/rota_livros/editar_livros/{{_id}}"> 
+                        <button class="btn btn-success mt-3"> 
+                            Editar livros 
+                        </button> 
+                    </a> 
+                    <a href="/rota_livros/deletar_livros/{{_id}}"> 
+                        <button class="btn btn-danger mt-3"> 
+                            Deletar livros 
+                        </button> 
+                    </a> 
+                </div> 
+            </div> 
+            {{/each}} 
+        </div> 
+    </div> 
+</main> 

@@ -3,19 +3,19 @@ const router = express.Router();
 
 const Livros = require("../models/livros");
 
-router.get("/livros", (req, res) => {
+router.get("/", (req, res) => {
     Livros.find()
     .lean()
     .then((livros) => {
-      res.render("admin/livros/livros", { livros: livros });
+      res.render("admin/book/books", { livros: livros });
     });
 });
 
-router.get("/livros/add", (req, res) => {
-  res.render("admin/livros/addlivros");
+router.get("/add", (req, res) => {
+  res.render("admin/book/addBook");
 });
 
-router.post("/livros/nova", (req, res) => {
+router.post("/add/new", (req, res) => {
   var livros = new Livros();
   livros.nome = req.body.nome;
   livros.descricao = req.body.descricao;
@@ -23,33 +23,33 @@ router.post("/livros/nova", (req, res) => {
   livros
     .save()
     .then(() => {
-      res.redirect("/rota_livros/livros");
+      res.redirect("/book/books");
     })
     .catch((erro) => {
       res.send("Houve um erro: " + erro);
     });
 });
 
-router.get("/editar_livros/:id", (req, res) => {
+router.get("/edit/:id", (req, res) => {
   Livros.findOne({ _id: req.params.id })
     .lean()
     .then((livros) => {
-      res.render("admin/livros/editlivros", { livro: livros });
+      res.render("admin/livros/editBook", { livro: livros });
     });
 });
 
-router.post("/livros/editar_livros", (req, res) => {
+router.post("/edit", (req, res) => {
   Livros.updateOne(
     { _id: req.body._id },
     { $set: { nome: req.body.nome, descricao: req.body.descricao, genero: req.body.genero } }
   ).then(() => {
-    res.redirect("/rota_livros/livros");
+    res.redirect("/book/books");
   });
 });
 
-router.get("/deletar_livros/:id", (req, res) => {
+router.get("/delete/:id", (req, res) => {
   Livros.deleteMany({ _id: req.params.id }).then(() => {
-    res.redirect("/rota_livros/livros");
+    res.redirect("/book/books");
   });
 });
 module.exports = router;
