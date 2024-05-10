@@ -4,7 +4,7 @@ const router = express.Router();
 const Livros = require("../models/livros");
 
 router.get("/", (req, res) => {
-    Livros.find()
+  Livros.find()
     .lean()
     .then((books) => {
       res.render("admin/book/books", { books: books });
@@ -16,14 +16,16 @@ router.get("/add", (req, res) => {
 });
 
 router.post("/add/new", (req, res) => {
-  var livros = new Livros();
-  livros.nome = req.body.nome;
-  livros.descricao = req.body.descricao;
-  livros.genero = req.body.genero;
-  livros
+  var livro = new Livros();
+
+  livro.nome = req.body.nome;
+  livro.descricao = req.body.descricao;
+  livro.genero = req.body.genero;
+
+  livro
     .save()
     .then(() => {
-      res.redirect("/book/books");
+      res.redirect("/book/");
     })
     .catch((erro) => {
       res.send("Houve um erro: " + erro);
@@ -33,23 +35,29 @@ router.post("/add/new", (req, res) => {
 router.get("/edit/:id", (req, res) => {
   Livros.findOne({ _id: req.params.id })
     .lean()
-    .then((livros) => {
-      res.render("admin/book/editBook", { livro: livros });
+    .then((books) => {
+      res.render("admin/book/editBook", { books });
     });
 });
 
 router.post("/edit", (req, res) => {
   Livros.updateOne(
     { _id: req.body._id },
-    { $set: { nome: req.body.nome, descricao: req.body.descricao, genero: req.body.genero } }
+    {
+      $set: {
+        nome: req.body.nome,
+        descricao: req.body.descricao,
+        genero: req.body.genero,
+      },
+    }
   ).then(() => {
-    res.redirect("/book/books");
+    res.redirect("/book/");
   });
 });
 
 router.get("/delete/:id", (req, res) => {
   Livros.deleteMany({ _id: req.params.id }).then(() => {
-    res.redirect("/book/books");
+    res.redirect("/book/");
   });
 });
 module.exports = router;

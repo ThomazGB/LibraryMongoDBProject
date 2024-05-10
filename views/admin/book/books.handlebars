@@ -1,30 +1,33 @@
-<main> 
-    <div class="p-5 mb-4 bg-light rounded-3"> 
-        <div class="container-fluid py-5"> 
-            <h2>Lista de livros</h2> 
-            <hr> 
-            <a href="/book/add"> 
-                <button class="btn btn-success">Novo livro</button></a> 
-            {{#each books}} 
-            <div class="card mt-4"> 
-                <div class="card-body"> 
-                    <h4><b>ID:</b>{{_id}}</h4> 
-                    <small><b>Nome:</b> {{nome}} </small><br> 
-                    <small><b>Descrição:</b> {{descricao}} </small><br>
-                    <small><b>Gênero:</b> {{genero}} </small><br>
-                    <a href="/book/edit/{{_id}}"> 
-                        <button class="btn btn-success mt-3"> 
-                            Editar livros 
-                        </button> 
-                    </a> 
-                    <a href="/book/delete/{{_id}}"> 
-                        <button class="btn btn-danger mt-3"> 
-                            Deletar livros 
-                        </button> 
-                    </a> 
-                </div> 
-            </div> 
-            {{/each}} 
-        </div> 
-    </div> 
-</main> 
+<link rel="stylesheet" href="/style/listView.css">
+
+<main>
+  <div class="content">
+    <h2>Lista de livros</h2>
+    <hr />
+    <a href="/book/add" style="width: fit-content;">
+      <button class="button">Novo livro</button>
+    </a>
+    {{#each books}}
+      <div class="item">
+        <h4 style="margin-bottom: 0.5rem;"><b>ID: </b>{{_id}}</h4>
+
+        <p style="margin-bottom: 0.5rem;"><b>Nome:</b> {{nome}} </p>
+        <p style="margin-bottom: 0.5rem;"><b>Descrição:</b> {{descricao}} </p>
+        <p style="margin-bottom: 0.5rem;"><b>Gênero:</b> {{genero}} </p>
+
+        <div>
+          <a href="/book/edit/{{_id}}">
+            <button class="button blue">
+              Editar livros
+            </button>
+          </a>
+          <a href="/book/delete/{{_id}}">
+            <button class="button red">
+              Deletar livros
+            </button>
+          </a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</main>
