@@ -6,8 +6,8 @@ const Livros = require("../models/livros");
 router.get("/", (req, res) => {
     Livros.find()
     .lean()
-    .then((livros) => {
-      res.render("admin/book/books", { livros: livros });
+    .then((books) => {
+      res.render("admin/book/books", { books: books });
     });
 });
 
@@ -34,7 +34,7 @@ router.get("/edit/:id", (req, res) => {
   Livros.findOne({ _id: req.params.id })
     .lean()
     .then((livros) => {
-      res.render("admin/livros/editBook", { livro: livros });
+      res.render("admin/book/editBook", { livro: livros });
     });
 });
 
