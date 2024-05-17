@@ -43,6 +43,12 @@ header nav {
 
 }
 
+input {
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+}
+
 button {
     background-color: transparent;
     border: none;

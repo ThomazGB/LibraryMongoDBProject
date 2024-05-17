@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/style/listView.css">
 <main>
   <div class="content">
       <h2> Editar informações: </h2>
@@ -5,20 +6,10 @@
       <hr>
 
       <div>
-          <form action="/author/edit" method="POST">
+          <form action="/author/edit" method="POST" class="item">
             {{#if author}}
-              <label for="_id">ID: </label>
-              <input
-                type="text"
-                id="_id"
-                name="_id"
-                readonly="true"
-                class="form-control"
-                value="{{author._id}}"
-              />
-              <br />
 
-              <label for="nome">Nome: </label>
+              <label for="nome"><b>Nome: </b></label>
               <input
                 type="text"
                 id="nome"
@@ -28,7 +19,7 @@
               />
               <br />
 
-              <label for="descricao">Nacionalidade: </label>
+              <label for="descricao"><b>Nacionalidade: </b></label>
               <input
                 type="text"
                 id="nacionalidade"

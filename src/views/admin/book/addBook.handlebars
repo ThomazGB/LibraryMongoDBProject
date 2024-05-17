@@ -1,10 +1,11 @@
+<link rel="stylesheet" href="/style/listView.css">
 <main>
     <div class="content">
       <h2> Novo livro: </h2>
       <hr>
 
-      <form action="/book/add/new" method="POST">
-        <label for="nome">Nome: </label>
+      <form action="/book/add/new" method="POST" class="item">
+        <label for="nome"><b>Nome: </b></label>
         <input
           type="text"
           id="nome"
@@ -13,7 +14,7 @@
         />
         <br />
 
-        <label for="descricao">Descrição: </label>
+        <label for="descricao"><b>Descrição: </b></label>
         <input
           type="text"
           id="descricao"
@@ -22,7 +23,7 @@
         />
         <br />
 
-        <label for="genero">Gênero: </label>
+        <label for="genero"><b>Gênero: </b></label>
         <input
           type="text"
           id="genero"

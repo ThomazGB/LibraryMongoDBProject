@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/style/listView.css">
+<main>
+  <div class="content">
+    <h2>
+      Editar Livros:
+    </h2>
+
+    <hr>
+
+    <div >
+      <form action="/book/edit" method="POST" class="item">
+        {{#if books}}
+
+          <label for="nome"><b>Nome: </b></label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            class="form-control"
+            value="{{books.nome}}"
+          />
+          <br />
+
+          <label for="descricao"><b>Descrição: </b></label>
+          <input
+            type="text"
+            id="descricao"
+            name="descricao"
+            class="form-control"
+            value="{{books.descricao}}"
+          />
+          <br />
+
+          <label for="descricao"><b>Gênero: </b></label>
+          <input
+            type="text"
+            id="genero"
+            name="genero"
+            class="form-control"
+            value="{{books.genero}}"
+          />
+          <br />
+
+          <button type="submit" class="button">Atualizar informações</button>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</main>

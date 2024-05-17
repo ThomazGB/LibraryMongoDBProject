@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/style/listView.css">
 <main>
   <div class="content">
     <h2> Adicionar autor: </h2>
@@ -6,9 +7,9 @@
 
     <div class="card">
 
-      <form action="/author/add/new" method="POST">
+      <form action="/author/add/new" method="POST" class="item">
 
-        <label for="nome">Nome: </label>
+        <label for="nome"><b>Nome: </b></label>
         <input
           type="text"
           id="nome"
@@ -17,7 +18,7 @@
         />
         <br />
 
-        <label for="nacionalidade">Nacionalidade: </label>
+        <label for="nacionalidade"><b>Nacionalidade: </b></label>
         <input
           type="text"
           id="nacionalidade"
